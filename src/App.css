@@ -1,4 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+@import url('https://fonts.googleapis.com/css?family=Chewy');
+
 
 body,
 html,
@@ -14,7 +16,7 @@ div#react-container {
   height: 100px;
   background-color: lightgray;
   text-align: center;
-  font-family: "Shadows Into Light", Arial;
+  font-family: 'Chewy', cursive;
 }
 
 .header h1 {
@@ -52,7 +54,7 @@ div.note:active {
 
 div.note p {
   font-size: 22px;
-  font-family: "Shadows Into Light", Arial;
+  font-family: 'Chewy', cursive;
   margin: 2px 8px 10px 8px;
   text-decoration: underline;
 }
