@@ -22,7 +22,7 @@ var Board = React.createClass({
           },
           componentWillMount() {
               if (this.props.count) {
-                  var url = `http://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`
+                  var url = `https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`
                   fetch(url)
                         .then(results => results.json())
                         .then(array => {
@@ -89,7 +89,7 @@ var Board = React.createClass({
                  </div>
                          {this.state.notes.map(this.eachNote)}
                          <button onClick={() => {
-                           var url = `http://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`
+                           var url = `https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`
                            fetch(url)
                            .then(results => results.json())
                            .then(array => {
