@@ -9,18 +9,18 @@ var Note = React.createClass({
             },
             componentWillMount() {
               console.log('inner height is', window.innerHeight)
-              const c = this.randomBetween(115, window.innerHeight -150, 'px');
+              const c = this.randomBetween(115, window.innerHeight -70, 'px');
               console.log('top value is ', c)
                 this.style = {
-                    right: this.randomBetween(0, window.innerWidth - 150, 'px'),
+                    right: this.randomBetween(0, window.innerWidth - 70, 'px'),
                     top: c
                 }
             },
             componentDidUpdate() {
-                if (this.state.editing) {
-                    this.refs.newText.focus()
-                    this.refs.newText.select()
-                }
+                // if (this.state.editing) {
+                //     this.refs.newText.focus()
+                //     this.refs.newText.select()
+                // }
             },
             shouldComponentUpdate(nextProps, nextState) {
                 return this.props.children !== nextProps.children || this.state !== nextState
@@ -28,13 +28,13 @@ var Note = React.createClass({
             randomBetween(x, y, s) {
                 return (x + Math.ceil(Math.random() * (y-x))) + s
             },
-            edit() {
-                this.setState({editing: true})
-            },
-            save() {
-                this.props.onChange(this.refs.newText.value, this.props.id)
-                this.setState({editing: false})
-            },
+            // edit() {
+            //     this.setState({editing: true})
+            // },
+            // save() {
+            //     this.props.onChange(this.refs.newText.value, this.props.id)
+            //     this.setState({editing: false})
+            // },
             remove() {
                 this.props.onRemove(this.props.id)
             },
@@ -55,7 +55,6 @@ var Note = React.createClass({
                          style={this.style}>
                         <p>{this.props.children}</p>
                         <span>
-                          <button onClick={this.edit}>EDIT</button>
                           <button onClick={this.remove}>X</button>
                         </span>
                     </div>

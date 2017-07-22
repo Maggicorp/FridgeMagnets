@@ -5,5 +5,6 @@ import Board from './Board';
 // import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <Board count={10} />, document.getElementById('react-container'));
+  // board count is units of 5
+  <Board count={3} />, document.getElementById('react-container'));
 // registerServiceWorker();

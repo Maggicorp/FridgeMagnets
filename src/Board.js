@@ -25,8 +25,18 @@ var Board = React.createClass({
                   var url = `http://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`
                   fetch(url)
                         .then(results => results.json())
-                        .then(array => array[0])
-                        .then(text => text.split('. '))
+                        .then(array => {
+                          console.log('array is ', array[0])
+                          return array[0]})
+                        .then(text => {
+                          let array = text.split(' ')
+                          // array.forEach(function(element) {
+                          //     element.replace(',', ' ');
+                          //   element.replace('.', ' ')})
+                          console.log('text is ', array)
+                          let ten = array.splice(0, 30)
+                          console.log('text is ', ten)
+                          return ten})
                         .then(array => array.forEach(
                               sentence => this.add(sentence)))
                         .catch(function(err) {
@@ -77,7 +87,20 @@ var Board = React.createClass({
                 <div className='header'><h1>My Fridge</h1>
                  </div>
                          {this.state.notes.map(this.eachNote)}
-                         <button onClick={() => this.add('New Note')}>+</button>
+                         <button onClick={() => {
+                           var url = `http://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`
+                           fetch(url)
+                           .then(results => results.json())
+                           .then(array => {
+                             console.log('array is ', array[0])
+                             return array[0]})
+                           .then(text => {
+                             let array = text.split(' ')
+                             console.log('text is ', array)
+                             let one = array.splice(0, 1)
+                             this.add(one)
+                             })}
+                         }>+</button>
                       </div>)
           }
       })
