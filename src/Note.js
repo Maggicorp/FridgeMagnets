@@ -8,19 +8,11 @@ var Note = React.createClass({
                 return {editing: false}
             },
             componentWillMount() {
-              console.log('inner height is', window.innerHeight)
-              const c = this.randomBetween(115, window.innerHeight -70, 'px');
-              console.log('top value is ', c)
+              const c = this.randomBetween(130, window.innerHeight -70, 'px');
                 this.style = {
                     right: this.randomBetween(0, window.innerWidth - 70, 'px'),
                     top: c
                 }
-            },
-            componentDidUpdate() {
-                // if (this.state.editing) {
-                //     this.refs.newText.focus()
-                //     this.refs.newText.select()
-                // }
             },
             shouldComponentUpdate(nextProps, nextState) {
                 return this.props.children !== nextProps.children || this.state !== nextState
@@ -28,13 +20,6 @@ var Note = React.createClass({
             randomBetween(x, y, s) {
                 return (x + Math.ceil(Math.random() * (y-x))) + s
             },
-            // edit() {
-            //     this.setState({editing: true})
-            // },
-            // save() {
-            //     this.props.onChange(this.refs.newText.value, this.props.id)
-            //     this.setState({editing: false})
-            // },
             remove() {
                 this.props.onRemove(this.props.id)
             },

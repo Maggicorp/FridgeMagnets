@@ -26,21 +26,24 @@ var Board = React.createClass({
                   fetch(url)
                         .then(results => results.json())
                         .then(array => {
-                          console.log('array is ', array[0])
+                          // console.log('array is ', array[0])
                           return array[0]})
                         .then(text => {
                           let array = text.split(' ')
-                          // array.forEach(function(element) {
-                          //     element.replace(',', ' ');
-                          //   element.replace('.', ' ')})
-                          console.log('text is ', array)
-                          let ten = array.splice(0, 30)
-                          console.log('text is ', ten)
-                          return ten})
+                          const newArray = []
+                          array.forEach(function(element) {
+                            // console.log('hello ' + element)
+                            const newElem = element.replace(/\W$/g, '');
+                            // console.log('hello ' + newElem);
+                const lower = newElem.toLowerCase();
+                          newArray.push(lower)
+                          })
+                          // console.log('text is ', newArray)
+                          return newArray})
                         .then(array => array.forEach(
                               sentence => this.add(sentence)))
                         .catch(function(err) {
-                          console.log("Didn't connect to the API", err)
+                          // console.log("Didn't connect to the API", err)
                         })
               }
           },
@@ -58,17 +61,17 @@ var Board = React.createClass({
               ]
               this.setState({notes})
           },
-          update(newText, id) {
-              var notes = this.state.notes.map(
-                  note => (note.id !== id) ?
-                     note :
-                      {
-                          ...note,
-                          note: newText
-                      }
-                  )
-              this.setState({notes})
-          },
+          // update(newText, id) {
+          //     var notes = this.state.notes.map(
+          //         note => (note.id !== id) ?
+          //            note :
+          //             {
+          //                 ...note,
+          //                 note: newText
+          //             }
+          //         )
+          //     this.setState({notes})
+          // },
           remove(id) {
               var notes = this.state.notes.filter(note => note.id !== id)
               this.setState({notes})
@@ -76,7 +79,7 @@ var Board = React.createClass({
           eachNote(note) {
               return (<Note key={note.id}
                             id={note.id}
-                            onChange={this.update}
+                            // onChange={this.update}
                             onRemove={this.remove}>
                         {note.note}
                       </Note>)
@@ -84,8 +87,8 @@ var Board = React.createClass({
           render() {
               return (
                 <div className='board'>
-                <div className='header'><h1>My Fridge</h1>
-                <h5>MaggiCorp Fridge Magnets</h5>
+                <div className='header'><h1>Meat Fridge Magnets</h1>
+                <h5>build by <a target="_blank" href="http://maggicorp.com/">MaggiCorp</a> using React</h5>
                  </div>
                          {this.state.notes.map(this.eachNote)}
                          <button onClick={() => {
@@ -93,15 +96,15 @@ var Board = React.createClass({
                            fetch(url)
                            .then(results => results.json())
                            .then(array => {
-                             console.log('array is ', array[0])
+                            //  console.log('array is ', array[0])
                              return array[0]})
                            .then(text => {
                              let array = text.split(' ')
-                             console.log('text is ', array)
-                             let one = array.splice(0, 1)
+                            //  console.log('text is ', array)
+                             let one = array.splice(1, 1)
                              this.add(one)
                              })}
-                         }>+</button>
+                         }>add more meat</button>
                       </div>)
           }
       })

@@ -6,5 +6,5 @@ import Board from './Board';
 
 ReactDOM.render(
   // board count is units of 5
-  <Board count={3} />, document.getElementById('react-container'));
+  <Board count={2} />, document.getElementById('react-container'));
 // registerServiceWorker();
