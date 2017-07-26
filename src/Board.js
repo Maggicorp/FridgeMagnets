@@ -9,7 +9,6 @@ var Board = React.createClass({
                   if(typeof props[propName] !== "number") {
                       return new Error("the count must be a number")
                   }
-
                   if(props[propName] > 100) {
                       return new Error('Creating ' + props[propName] + ' notes is ridiculous')
                   }
@@ -21,29 +20,25 @@ var Board = React.createClass({
               }
           },
           componentWillMount() {
+
               if (this.props.count) {
                   var url = `https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`
                   fetch(url)
                         .then(results => results.json())
                         .then(array => {
-                          // console.log('array is ', array[0])
                           return array[0]})
                         .then(text => {
                           let array = text.split(' ')
                           const newArray = []
                           array.forEach(function(element) {
-                            // console.log('hello ' + element)
                             const newElem = element.replace(/\W$/g, '');
-                            // console.log('hello ' + newElem);
-                const lower = newElem.toLowerCase();
+                            const lower = newElem.toLowerCase();
                           newArray.push(lower)
                           })
-                          // console.log('text is ', newArray)
                           return newArray})
                         .then(array => array.forEach(
                               sentence => this.add(sentence)))
                         .catch(function(err) {
-                          // console.log("Didn't connect to the API", err)
                         })
               }
           },
@@ -88,7 +83,7 @@ var Board = React.createClass({
               return (
                 <div className='board'>
                 <div className='header'><h1>Meat Fridge Magnets</h1>
-                <h5>build by <a target="_blank" href="http://maggicorp.com/">MaggiCorp</a> using React</h5>
+                <h5>built by <a target="_blank" href="http://maggicorp.com/">MaggiCorp</a> using React</h5>
                  </div>
                          {this.state.notes.map(this.eachNote)}
                          <button onClick={() => {
