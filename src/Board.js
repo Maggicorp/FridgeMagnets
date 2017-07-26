@@ -83,7 +83,7 @@ var Board = React.createClass({
               return (
                 <div className='board'>
                 <div className='header'><h1>Meat Fridge Magnets</h1>
-                <h5>built by <a target="_blank" href="http://maggicorp.com/">MaggiCorp</a> using React</h5>
+                <h5>builtgi by <a target="_blank" href="http://maggicorp.com/">MaggiCorp</a> using React</h5>
                  </div>
                          {this.state.notes.map(this.eachNote)}
                          <button onClick={() => {
